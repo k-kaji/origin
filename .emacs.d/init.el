@@ -1,12 +1,3 @@
-;;--------------------------------------------------------------------------
-
-;;ロードパス
-;;(setq load-path (cons "~/.emacs.d/elpa/zenburn-theme-20180123.59" load-path))
-;;(setq load-path (cons "~/.emacs.d/conf/" load-path))
-;;(add-to-list 'load-path "~/.emacs.d/conf")
-
-;;--------------------------------------------------------------------------
-
 ;; load-pathを追加する関数を定義
 (defun add-to-load-path (&rest paths)
   (let (path)
@@ -24,6 +15,7 @@
 
 ;;conf以下のcommon.elを読込
 (load "common")
+;;(load "org")
 
 (require 'undo-tree)
 
@@ -59,19 +51,7 @@
 ;;カスタムファイルを読み込む
 (load custom-file)
 
-;;(require 'init-loader)
-;;設定ファイルがあるdirectryを読み込む
-;;(init-loader-load "~/.emacs.d/conf")
-
-;;-------------------------------------------------------------------------
-
-;;package管理
-;;(package-initialize)
-;;(setq package-archives
-;;'(("gnu" . "http://elpa.gnu.org/packages/")
-;;("melpa" . "http://melpa.org/packages/")
-;;("org" . "http://orgmode.org/elpa/")))
-
+;;--------------------------------------------------------------------------
 
 ;package.elを有効化
 (require 'package)
@@ -94,14 +74,11 @@
 ;;reload
 (global-set-key
  [f12] 'eval-buffer)
-
-
 ;;
 (global-set-key (kbd "<zenkaku-hankaku>") 'toggle-input-method)
 
 (add-hook 'mozc-mode-hook
   (lambda()
     (define-key mozc-mode-map (kbd "<zenkaku-hankaku>") 'toggle-input-method)))
-
 
 ;;-------------------------------------------------------------------------
